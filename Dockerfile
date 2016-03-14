@@ -18,11 +18,14 @@ RUN apt-get update && \
 	make install  && \
 	cd ../  && \
 	rm -r -f freerdp-1.0.2*  && \
-	wget http://www.libssh.org/files/0.5/libssh-0.5.3.tar.gz && \
-	tar zxvf libssh-0.5.3.tar.gz && \
+	wget https://red.libssh.org/attachments/download/121/libssh-0.6.5.tar.xz && \
+	xz -d libssh-0.6.5.tar.xz  && \
+	tar xvf libssh-0.6.5.tar  && \
 	mkdir -p build/libssh && \
 	cd build/libssh && \
-	cmake  -DCMAKE_INSTALL_PREFIX=/usr/local/  ../../libssh-0.5.3/ && \
-	make && \
+	cmake  -DCMAKE_INSTALL_PREFIX=/usr/local/  ../../libssh-0.6.5 && \
 	make install && \
+	cd /root && \
+	rm -r -f libssh-0.6.5* && \
+	rm -r -f build && \
 	rm -r -f /tmp/*
